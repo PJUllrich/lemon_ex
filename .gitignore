@@ -24,3 +24,6 @@ lemon_ex-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+# ElixirLS compile folder
+.elixir_ls
