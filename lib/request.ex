@@ -1,6 +1,4 @@
 defmodule LemonEx.Request do
-  alias LemonEx.LemonSqueezy.User
-
   @api_base_url "https://api.lemonsqueezy.com/v1"
 
   defp api_key do

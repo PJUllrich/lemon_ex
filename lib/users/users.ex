@@ -1,5 +1,5 @@
 defmodule LemonEx.Users do
-  alias LemonEx.User
+  alias LemonEx.Users.User
   alias LemonEx.Request
 
   def get_authenticated_user do
