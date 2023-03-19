@@ -1,10 +1,10 @@
-defmodule LemonEx.User do
-  alias LemonEx.Schema.User
+defmodule LemonEx.Users do
+  alias LemonEx.User
   alias LemonEx.Request
 
   def get_authenticated_user do
     with {:ok, body} <- Request.get("/users/me") do
-      User.from_json(body)
+      {:ok, User.from_json(body)}
     end
   end
 end

@@ -1,4 +1,4 @@
-defmodule LemonEx.Schema.User do
+defmodule LemonEx.User do
   defstruct [
     :id,
     :name,
