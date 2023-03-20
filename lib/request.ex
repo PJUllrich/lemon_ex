@@ -1,6 +1,20 @@
 defmodule LemonEx.Request do
   @api_base_url "https://api.lemonsqueezy.com/v1"
 
+  @spec post(binary(), any()) :: {:ok, map()} | {:error, any()} | {:error, integer(), any()}
+  def post(url, payload) when is_binary(payload) do
+    headers = get_headers()
+    url = "#{@api_base_url}#{url}"
+    response = HTTPoison.post(url, payload, headers)
+    handle_response(response)
+  end
+
+  def post(url, payload) do
+    with {:ok, payload} <- Jason.encode(payload) do
+      post(url, payload)
+    end
+  end
+
   @spec get(binary()) :: {:ok, map()} | {:error, any()} | {:error, integer(), any()}
   def get(url) do
     headers = get_headers()
@@ -23,7 +37,7 @@ defmodule LemonEx.Request do
     end
   end
 
-  @spec delete(binary()) :: {:ok, map()} | {:error, any()} | {:error, integer(), any()}
+  @spec delete(binary()) :: :ok | {:ok, map()} | {:error, any()} | {:error, integer(), any()}
   def delete(url) do
     headers = get_headers()
     url = "#{@api_base_url}#{url}"
@@ -47,6 +61,10 @@ defmodule LemonEx.Request do
     Jason.decode(body)
   end
 
+  defp handle_response({:ok, %HTTPoison.Response{status_code: 204, body: body}}) do
+    :ok
+  end
+
   defp handle_response({:ok, %HTTPoison.Response{status_code: status_code, body: body}}) do
     with {:ok, body} <- Jason.decode(body) do
       {:error, status_code, body}
@@ -56,4 +74,8 @@ defmodule LemonEx.Request do
   defp handle_response({:error, %HTTPoison.Error{} = error}) do
     {:error, error}
   end
+
+  defp decode_body("" = _body), do: {:ok, nil}
+
+  defp decode_body(body), do: Jason.decode(body)
 end
