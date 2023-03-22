@@ -15,3 +15,4 @@ end
 - [ ] Add all schema objects
 - [ ] Add optional filters to requests
 - [ ] Add webhook controller
+- [ ] Allow drop-in of other HTTP libraries
