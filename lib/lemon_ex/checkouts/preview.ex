@@ -16,6 +16,8 @@ defmodule LemonEx.Checkouts.Preview do
     :total_formatted
   ]
 
+  def from_json(false), do: nil
+
   def from_json(body) do
     %__MODULE__{
       currency: body["currency"],

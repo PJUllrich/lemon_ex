@@ -33,7 +33,7 @@ defmodule LemonEx.Checkouts.Checkout do
       variant_id: attributes["variant_id"],
       custom_price: attributes["custom_price"],
       product_options: ProductOptions.from_json(product_options),
-      checkout_options: CheckoutOptions.from_json(product_options),
+      checkout_options: CheckoutOptions.from_json(checkout_options),
       checkout_data: CheckoutData.from_json(checkout_data),
       preview: Preview.from_json(preview),
       expires_at: attributes["expires_at"],

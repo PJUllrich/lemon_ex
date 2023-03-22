@@ -57,11 +57,12 @@ defmodule LemonEx.Request do
     ]
   end
 
-  defp handle_response({:ok, %HTTPoison.Response{status_code: 200, body: body}}) do
+  defp handle_response({:ok, %HTTPoison.Response{status_code: status_code, body: body}})
+       when status_code in [200, 201] do
     Jason.decode(body)
   end
 
-  defp handle_response({:ok, %HTTPoison.Response{status_code: 204, body: body}}) do
+  defp handle_response({:ok, %HTTPoison.Response{status_code: 204, body: _body}}) do
     :ok
   end
 
@@ -74,8 +75,4 @@ defmodule LemonEx.Request do
   defp handle_response({:error, %HTTPoison.Error{} = error}) do
     {:error, error}
   end
-
-  defp decode_body("" = _body), do: {:ok, nil}
-
-  defp decode_body(body), do: Jason.decode(body)
 end

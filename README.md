@@ -16,3 +16,8 @@ end
 - [ ] Add optional filters to requests
 - [ ] Add webhook controller
 - [ ] Allow drop-in of other HTTP libraries
+
+### Notes
+
+- The timestamps are mostly snake case but sometimes camelCase (e.g. File or User object)
+- 
