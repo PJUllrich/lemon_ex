@@ -5,21 +5,17 @@ defmodule LemonEx.Request do
   def post(url, payload) when is_binary(payload) do
     headers = get_headers()
     url = "#{@api_base_url}#{url}"
+    payload = prepare_payload(payload)
     response = HTTPoison.post(url, payload, headers)
     handle_response(response)
   end
 
-  def post(url, payload) do
-    with {:ok, payload} <- Jason.encode(payload) do
-      post(url, payload)
-    end
-  end
-
-  @spec get(binary()) :: {:ok, map()} | {:error, any()} | {:error, integer(), any()}
-  def get(url) do
+  @spec get(binary(), keyword()) :: {:ok, map()} | {:error, any()} | {:error, integer(), any()}
+  def get(url, params \\ []) do
     headers = get_headers()
     url = "#{@api_base_url}#{url}"
-    response = HTTPoison.get(url, headers)
+    filter = prepare_filter(params)
+    response = HTTPoison.get(url, headers, params: filter)
     handle_response(response)
   end
 
@@ -27,14 +23,9 @@ defmodule LemonEx.Request do
   def patch(url, payload) when is_binary(payload) do
     headers = get_headers()
     url = "#{@api_base_url}#{url}"
+    payload = prepare_payload(payload)
     response = HTTPoison.patch(url, payload, headers)
     handle_response(response)
-  end
-
-  def patch(url, payload) do
-    with {:ok, payload} <- Jason.encode(payload) do
-      patch(url, payload)
-    end
   end
 
   @spec delete(binary()) :: :ok | {:ok, map()} | {:error, any()} | {:error, integer(), any()}
@@ -55,6 +46,20 @@ defmodule LemonEx.Request do
       {"Accept", "application/vnd.api+json"},
       {"Content-Type", "application/vnd.api+json"}
     ]
+  end
+
+  defp prepare_payload(payload) when is_binary(payload), do: payload
+
+  defp prepare_payload(payload) do
+    Jason.encode!(payload)
+  end
+
+  defp prepare_filter([]), do: []
+
+  defp prepare_filter(params) do
+    Enum.reduce(params, %{}, fn {key, value}, acc ->
+      Map.put(acc, "filter[#{key}]", value)
+    end)
   end
 
   defp handle_response({:ok, %HTTPoison.Response{status_code: status_code, body: body}})

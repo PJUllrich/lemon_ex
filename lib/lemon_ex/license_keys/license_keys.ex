@@ -9,8 +9,8 @@ defmodule LemonEx.LicenseKeys do
     end
   end
 
-  def list() do
-    with {:ok, body} <- Request.get("/license-keys") do
+  def list(filter \\ []) do
+    with {:ok, body} <- Request.get("/license-keys", filter) do
       {:ok, PaginatedResponse.from_json(body, LicenseKey)}
     end
   end

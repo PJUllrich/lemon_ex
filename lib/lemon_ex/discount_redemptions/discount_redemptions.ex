@@ -9,8 +9,8 @@ defmodule LemonEx.DiscountRedemptions do
     end
   end
 
-  def list() do
-    with {:ok, body} <- Request.get("/discount-redemptions") do
+  def list(filter \\ []) do
+    with {:ok, body} <- Request.get("/discount-redemptions", filter) do
       {:ok, PaginatedResponse.from_json(body, DiscountRedemption)}
     end
   end

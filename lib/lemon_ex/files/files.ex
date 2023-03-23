@@ -9,8 +9,8 @@ defmodule LemonEx.Files do
     end
   end
 
-  def list() do
-    with {:ok, body} <- Request.get("/files") do
+  def list(filter \\ []) do
+    with {:ok, body} <- Request.get("/files", filter) do
       {:ok, PaginatedResponse.from_json(body, File)}
     end
   end

@@ -9,8 +9,8 @@ defmodule LemonEx.OrderItems do
     end
   end
 
-  def list() do
-    with {:ok, body} <- Request.get("/order-items") do
+  def list(filter \\ []) do
+    with {:ok, body} <- Request.get("/order-items", filter) do
       {:ok, PaginatedResponse.from_json(body, OrderItem)}
     end
   end

@@ -9,8 +9,8 @@ defmodule LemonEx.Variants do
     end
   end
 
-  def list() do
-    with {:ok, body} <- Request.get("/variants") do
+  def list(filter \\ []) do
+    with {:ok, body} <- Request.get("/variants", filter) do
       {:ok, PaginatedResponse.from_json(body, Variant)}
     end
   end

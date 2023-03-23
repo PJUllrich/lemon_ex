@@ -36,8 +36,8 @@ defmodule LemonEx.Checkouts do
     end
   end
 
-  def list() do
-    with {:ok, body} <- Request.get("/checkouts") do
+  def list(filter \\ []) do
+    with {:ok, body} <- Request.get("/checkouts", filter) do
       {:ok, PaginatedResponse.from_json(body, Checkout)}
     end
   end

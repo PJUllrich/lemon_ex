@@ -9,8 +9,8 @@ defmodule LemonEx.SubscriptionInvoices do
     end
   end
 
-  def list() do
-    with {:ok, body} <- Request.get("/subscription-invoices") do
+  def list(filter \\ []) do
+    with {:ok, body} <- Request.get("/subscription-invoices", filter) do
       {:ok, PaginatedResponse.from_json(body, SubscriptionInvoice)}
     end
   end
