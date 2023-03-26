@@ -8,7 +8,7 @@ defmodule LemonEx.Webhooks.Plug do
 
   Create a new module that implements the callback:
   ```
-  handle_event(%LemonEx.Webhooks.Event{}) :: :ok | {:error, reason}
+  handle_event(%LemonEx.Webhooks.Event{}) :: :ok | {:error, binary()}
   ```
 
   The handler module should call your application logic and return
@@ -41,7 +41,7 @@ defmodule LemonEx.Webhooks.Plug do
   ```elixir
   # In your endpoint.ex
   plug LemonEx.Webhooks.Plug,
-    at: "/webhooks/lemonsqueezy",
+    at: "/webhook/lemonsqueezy",
     handler: MyAppWeb.MyHandler
 
   # Make sure that this plug comes after the LemonEx plug.
@@ -57,20 +57,10 @@ defmodule LemonEx.Webhooks.Plug do
 
   @impl true
   def init(opts) do
-    path_info = String.split(opts[:at], "/", trim: true)
+    at = get_at_option!(opts)
+    path_info = String.split(at, "/", trim: true)
 
-    handler =
-      opts[:handler] ||
-        raise """
-        You must provide a handler module to the LemonEx Plug.
-
-        When you add the plug to your "endpoint.ex", you can specify the handler like this:
-
-          plug LemonEx.Webhooks.Plug,
-            at: "/webhooks/lemonsqueezy",
-            handler: MyAppWeb.MyHandler
-
-        """
+    handler = get_handler_option!(opts)
 
     %{
       path_info: path_info,
@@ -100,5 +90,33 @@ defmodule LemonEx.Webhooks.Plug do
     conn
     |> send_resp(status, message)
     |> halt()
+  end
+
+  defp get_at_option!(opts) do
+    opts[:at] ||
+      raise """
+      You must provide a path in the "at"-option when adding the LemonEx Plug to the endpoint.
+
+        When you add the plug to your "endpoint.ex", you can specify the path as "at", like this:
+
+          plug LemonEx.Webhooks.Plug,
+            at: "/webhooks/lemonsqueezy",
+            handler: MyAppWeb.MyHandler
+
+      """
+  end
+
+  defp get_handler_option!(opts) do
+    opts[:handler] ||
+      raise """
+      You must provide a handler module to the LemonEx Plug.
+
+      When you add the plug to your "endpoint.ex", you can specify the handler like this:
+
+        plug LemonEx.Webhooks.Plug,
+          at: "/webhooks/lemonsqueezy",
+          handler: MyAppWeb.MyHandler
+
+      """
   end
 end

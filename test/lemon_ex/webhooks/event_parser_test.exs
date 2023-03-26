@@ -1,9 +1,5 @@
 defmodule LemonEx.Webhooks.EventParserTest do
-  use ExUnit.Case
-  use Plug.Test
-
-  import Plug.Conn
-  import Support.Fixtures
+  use Support.ConnCase
 
   alias LemonEx.Webhooks.EventParser
 
@@ -19,8 +15,7 @@ defmodule LemonEx.Webhooks.EventParserTest do
       raw_payload = load_json(:event)
 
       conn =
-        conn(:post, @endpoint)
-        |> put_private(:raw_body, raw_payload)
+        conn(:post, @endpoint, raw_payload)
         |> put_req_header("x-signature", "foobar")
 
       assert {:error, 400, "Signature and Payload Hash unequal."} = EventParser.parse(conn)
@@ -28,7 +23,7 @@ defmodule LemonEx.Webhooks.EventParserTest do
 
     test "returns an event if successful" do
       raw_payload = load_json(:event)
-      signature = generate_signature_header(raw_payload)
+      signature = gen_signature(raw_payload)
 
       conn =
         conn(:post, @endpoint, raw_payload)
@@ -43,11 +38,4 @@ defmodule LemonEx.Webhooks.EventParserTest do
       assert event.data.identifier == "636f855c-1fb9-4c07-b75c-3a10afef010a"
     end
   end
-
-  defp generate_signature_header(payload) do
-    code = :crypto.mac(:hmac, :sha256, secret(), payload)
-    Base.encode16(code, case: :lower)
-  end
-
-  defp secret(), do: Application.get_env(:lemon_ex, :webhook_secret)
 end
