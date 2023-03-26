@@ -8,7 +8,8 @@ defmodule LemonEx.MixProject do
       elixir: "~> 1.14",
       start_permanent: Mix.env() == :prod,
       elixirc_paths: elixirc_paths(Mix.env()),
-      deps: deps()
+      deps: deps(),
+      package: package()
     ]
   end
 
@@ -28,7 +29,18 @@ defmodule LemonEx.MixProject do
       {:httpoison, "~> 1.8"},
       {:jason, "~> 1.2"},
       {:plug, "~> 1.14"},
-      {:plug_crypto, "~> 1.2"}
+      {:plug_crypto, "~> 1.2"},
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
+    ]
+  end
+
+  defp package do
+    [
+      description: "An Elixir client for the API and Webhooks of LemonSqueezy.",
+      files: ["lib", "LICENSE*", "mix.exs", "README*"],
+      licenses: ["MIT"],
+      maintainers: ["Peter Ullrich"],
+      links: %{"GitHub" => "https://github.com/PJUllrich/lemon_ex"}
     ]
   end
 end
