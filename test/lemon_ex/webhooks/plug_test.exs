@@ -13,8 +13,13 @@ defmodule LemonEx.Webhooks.PlugTest do
         )
 
   defmodule Handler do
+    @behaviour LemonEx.Webhooks.Handler
+
     alias LemonEx.Webhooks.Event
+
+    @impl true
     def handle_event(%Event{name: "order_created"}), do: :ok
+    @impl true
     def handle_event(%Event{name: "bad-event"}), do: {:error, "Bad event."}
   end
 
