@@ -5,13 +5,12 @@ defmodule LemonEx.Webhooks.EventParser do
 
   import Plug.Conn
 
-  alias LemonEx.Webhooks.CacheRawBodyPlug
   alias LemonEx.Webhooks.Event
 
-  @spec parse(Plug.Conn.t(), map()) :: {:ok, map()} | {:error, integer(), binary()}
-  def parse(%Plug.Conn{} = conn, payload) do
+  @spec parse(Plug.Conn.t()) :: {:ok, map()} | {:error, integer(), binary()}
+  def parse(%Plug.Conn{} = conn) do
     with {:ok, signature} <- get_x_signature(conn),
-         :ok <- verify_header(conn, signature),
+         {:ok, payload} <- verify_payload(conn, signature),
          event <- Event.from_json(payload) do
       {:ok, event}
     end
@@ -24,15 +23,15 @@ defmodule LemonEx.Webhooks.EventParser do
     end
   end
 
-  defp verify_header(conn, signature) do
-    raw_body = CacheRawBodyPlug.get_raw_body!(conn)
+  defp verify_payload(conn, signature) do
+    {:ok, raw_body, _conn} = read_body(conn)
     secret = get_secret!()
     hash = hash_raw_body(raw_body, secret)
 
     # Prevent timing attacks by using byte-wise comparison.
     # Context: https://codahale.com/a-lesson-in-timing-attacks
     if Plug.Crypto.secure_compare(hash, signature) do
-      :ok
+      {:ok, Jason.decode!(raw_body)}
     else
       {:error, 400, "Signature and Payload Hash unequal."}
     end
