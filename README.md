@@ -38,6 +38,57 @@ iex> LemonEx.Variants.list()
 
 You can find all defined objects in the LemonSqueezy API [docs](https://docs.lemonsqueezy.com/help).
 
+### Handling Webhook Events
+
+To handle Webhook Events coming from LemonSqueezy, you first have to [set up a webhook](https://app.lemonsqueezy.com/settings/webhooks/). You can generate a webhook secret with:
+
+```elixir
+40 |> :crypto.strong_rand_bytes() |> Base.encode16()
+```
+
+Once you set up your webhook, you need to create a module that will handle the events. Like this for example:
+
+```elixir
+defmodule MyAppWeb.MyWebhookHandler do
+  @behaviour LemonEx.Webhooks.Handler
+
+  @impl true
+  def handle_event(%LemonEx.Webhooks.Event{name: "order_created"} = event) do
+  # The event.meta holds all provided meta-data, also custom_data.
+    %{"customer_id" => customer_id} = event.meta["custom_data"]
+
+    # The event.data holds the object of the event, like e.g. an `LemonEx.Orders.Order{}`.
+    new_order = event.data
+
+    # do something with the new order
+
+    # Return either :ok or {:error, error_message}
+    :ok
+  end
+
+  # You need to handle all incoming events. So, better have a
+  # catch-all handler for events that you don't want to handle,
+  # but only want to acknowledge.
+  @impl true
+  def handle_event(_unhandled_event), do: :ok
+end
+```
+
+Next, you have to add the `LemonEx.Webhooks.Plug` to your `endpoint.ex` like this:
+
+```elixir
+# In your endpoint.ex
+
+plug LemonEx.Webhooks.Plug,
+  at: "/webhook/lemonsqueezy", # <- At which path the Plug expects to receive webhooks
+  handler: MyAppWeb.MyWebhookHandler # <- Your handler module
+
+# Make sure that this plug comes after the LemonEx plug.
+plug Plug.Parsers
+```
+
+And that's it!
+
 ### List with Filter
 
 When fetching all elements using `list/1`, you can add an optional filter, like this:

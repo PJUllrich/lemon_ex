@@ -17,6 +17,9 @@ defmodule LemonEx.Webhooks.Plug do
   For example:
   ```
   defmodule MyAppWeb.MyWebhookHandler do
+    @behaviour LemonEx.Webhooks.Handler
+
+    @impl true
     def handle_event(%LemonEx.Webhooks.Event{name: "order_created"} = event) do
       # The event.data holds the object of the event,
       # like e.g. an `LemonEx.Orders.Order{}`.
@@ -31,6 +34,7 @@ defmodule LemonEx.Webhooks.Plug do
     # You need to handle all incoming events. So, better have a
     # catch-all handler for events that you don't want to handle,
     # but only want to acknowledge.
+    @impl true
     def handle_event(_unhandled_event), do: :ok
   end
   ```
