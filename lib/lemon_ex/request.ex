@@ -37,7 +37,7 @@ defmodule LemonEx.Request do
   end
 
   defp api_key do
-    Application.get_env(:lemon_ex, :api_key)
+    Application.get_env(:lemon_ex, :api_key, "")
   end
 
   defp get_headers do

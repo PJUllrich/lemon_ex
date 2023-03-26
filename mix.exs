@@ -23,7 +23,8 @@ defmodule LemonEx.MixProject do
     [
       {:httpoison, "~> 1.8"},
       {:jason, "~> 1.2"},
-      {:plug, "~> 1.14"}
+      {:plug, "~> 1.14"},
+      {:plug_crypto, "~> 1.2"}
     ]
   end
 end

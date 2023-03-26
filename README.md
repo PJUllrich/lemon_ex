@@ -10,6 +10,20 @@ def deps do
 end
 ```
 
+## Configuration
+
+To make API calls, you need to create an [API key](https://docs.lemonsqueezy.com/docs/guides/developer-guide/getting-started) first. If you also want to handle webhook requests, you need to create a [webhook secret](https://docs.lemonsqueezy.com/api/webhooks) too. Once you have these, you can configure them in e.g. your `runtime.exs` like this:
+
+```elixir
+import Config
+
+config :lemon_ex, 
+  api_key: System.get_env("LEMONSQUEEZY_API_KEY"),
+  webhook_secret: System.get_env("LEMONSQUEEZY_WEBHOOK_SECRET")
+```
+
+If you don't provide a valid API key, you will receive `401: Unauthorized` error responses.
+
 ### Making Requests
 
 Every LemonSqueezy `object` has its own `context`. The contexts implement basic CRUD endpoints where available. Every CRUD endpoint returns either the object as a struct (e.g. `LemonEx.Variants.Variant`) or a `PaginatedResponse`. For example, the `variant` object has the context `LemonEx.Variants` which implements a `get/1` and `list/1` function. You can simply call these functions like so:
@@ -49,6 +63,7 @@ LemonEx.Customers.list(store_id: 12345)
 - [ ] Write better docs
 - [ ] Allow fetching the next and previous page through `PaginatedResponse`
 - [ ] Allow drop-in of other HTTP libraries
+- [ ] Add tests
 
 ### Notes
 

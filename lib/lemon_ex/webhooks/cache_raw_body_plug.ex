@@ -29,14 +29,19 @@ defmodule LemonEx.Webhooks.CacheRawBodyPlug do
   end
   ```
   """
+
+  @behaviour Plug
+
+  @impl true
   def init(opts), do: opts
 
+  @impl true
   def call(conn, opts) do
     {:ok, body, conn} = Plug.Conn.read_body(conn, opts)
     Plug.Conn.put_private(conn, :raw_body, body)
   end
 
-  def get_raw_body(conn) do
-    conn.private[:raw_body]
+  def get_raw_body!(conn) do
+    Map.fetch!(conn.private, :raw_body)
   end
 end
