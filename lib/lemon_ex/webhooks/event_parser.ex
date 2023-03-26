@@ -6,12 +6,14 @@ defmodule LemonEx.Webhooks.EventParser do
   import Plug.Conn
 
   alias LemonEx.Webhooks.CacheRawBodyPlug
+  alias LemonEx.Webhooks.Event
 
   @spec parse(Plug.Conn.t(), map()) :: {:ok, map()} | {:error, integer(), binary()}
-  def parse(%Plug.Conn{} = conn, _payload) do
+  def parse(%Plug.Conn{} = conn, payload) do
     with {:ok, signature} <- get_x_signature(conn),
-         :ok <- verify_header(conn, signature) do
-      :ok
+         :ok <- verify_header(conn, signature),
+         event <- Event.from_json(payload) do
+      {:ok, event}
     end
   end
 
