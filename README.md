@@ -109,14 +109,12 @@ LemonEx.Customers.list(store_id: 12345)
 
 - [x] Add all schema objects
 - [x] Add optional filters to requests
-- [ ] Add webhook controller
-- [ ] Add raw-body plug
-- [ ] Write better docs
+- [x] Add webhook plug and handler
+- [x] Write better docs
 - [ ] Allow fetching the next and previous page through `PaginatedResponse`
 - [ ] Allow drop-in of other HTTP libraries
-- [ ] Add tests
+- [ ] Add schema tests
 
 ### Notes
 
 - The timestamps are mostly snake case but sometimes camelCase (e.g. File or User object)
-- 
