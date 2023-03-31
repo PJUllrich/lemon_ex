@@ -1,14 +1,18 @@
 defmodule LemonEx.MixProject do
   use Mix.Project
 
+  @version "0.1.1"
+  @source_url "https://github.com/PJUllrich/lemon_ex"
+
   def project do
     [
       app: :lemon_ex,
-      version: "0.1.0",
+      version: @version,
       elixir: "~> 1.14",
       start_permanent: Mix.env() == :prod,
       elixirc_paths: elixirc_paths(Mix.env()),
       deps: deps(),
+      docs: docs(),
       package: package()
     ]
   end
@@ -37,10 +41,23 @@ defmodule LemonEx.MixProject do
   defp package do
     [
       description: "An Elixir client for the API and Webhooks of LemonSqueezy.",
-      files: ["lib", "LICENSE*", "mix.exs", "README*"],
+      files: ["lib", "LICENSE", "mix.exs", "README.md"],
       licenses: ["MIT"],
       maintainers: ["Peter Ullrich"],
-      links: %{"GitHub" => "https://github.com/PJUllrich/lemon_ex"}
+      links: %{"GitHub" => @source_url}
+    ]
+  end
+
+  defp docs do
+    [
+      extras: [
+        "README.md",
+        "LICENSE"
+      ],
+      main: "readme",
+      source_url: @source_url,
+      source_ref: "main",
+      formatters: ["html"]
     ]
   end
 end

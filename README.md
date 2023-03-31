@@ -1,5 +1,7 @@
 # LemonEx
 
+An Elixir client for the API and Webhooks of LemonSqueezy.
+
 ## Installation
 
 ```elixir
@@ -10,9 +12,11 @@ def deps do
 end
 ```
 
+[Documentation](https://hexdocs.pm/lemon_ex/readme.html)
+
 ## Configuration
 
-To make API calls, you need to create an [API key](https://docs.lemonsqueezy.com/docs/guides/developer-guide/getting-started) first. If you also want to handle webhook requests, you need to create a [webhook secret](https://docs.lemonsqueezy.com/api/webhooks) too. Once you have these, you can configure them in e.g. your `runtime.exs` like this:
+To make API calls, you need to create an [API key](https://docs.lemonsqueezy.com/docs/guides/developer-guide/getting-started) first. If you also want to handle webhook requests, you need to create a [webhook secret](https://docs.lemonsqueezy.com/api/webhooks) too. See the section below for tips on how to generate the webhook secret. Once you have these, you can configure them in e.g. your `runtime.exs` like this:
 
 ```elixir
 import Config
@@ -24,7 +28,7 @@ config :lemon_ex,
 
 If you don't provide a valid API key, you will receive `401: Unauthorized` error responses.
 
-### Making Requests
+## Making Requests
 
 Every LemonSqueezy `object` has its own `context`. The contexts implement basic CRUD endpoints where available. Every CRUD endpoint returns either the object as a struct (e.g. `LemonEx.Variants.Variant`) or a `PaginatedResponse`. For example, the `variant` object has the context `LemonEx.Variants` which implements a `get/1` and `list/1` function. You can simply call these functions like so:
 
@@ -38,7 +42,7 @@ iex> LemonEx.Variants.list()
 
 You can find all defined objects in the LemonSqueezy API [docs](https://docs.lemonsqueezy.com/help).
 
-### Handling Webhook Events
+## Handling Webhook Events
 
 To handle Webhook Events coming from LemonSqueezy, you first have to [set up a webhook](https://app.lemonsqueezy.com/settings/webhooks/). You can generate a webhook secret with:
 
@@ -89,7 +93,7 @@ plug Plug.Parsers
 
 And that's it!
 
-### List with Filter
+## List with Filter
 
 When fetching all elements using `list/1`, you can add an optional filter, like this:
 
@@ -105,7 +109,7 @@ LemonEx.Customers.list(email: "foo@bar.com")
 LemonEx.Customers.list(store_id: 12345)
 ```
 
-### Todos
+## Todos
 
 - [x] Add all schema objects
 - [x] Add optional filters to requests
@@ -115,6 +119,6 @@ LemonEx.Customers.list(store_id: 12345)
 - [ ] Allow drop-in of other HTTP libraries
 - [ ] Add schema tests
 
-### Notes
+## Notes
 
 - The timestamps are mostly snake case but sometimes camelCase (e.g. File or User object)
