@@ -47,7 +47,17 @@ You can find all defined objects in the LemonSqueezy API [docs](https://docs.lem
 To handle Webhook Events coming from LemonSqueezy, you first have to [set up a webhook](https://app.lemonsqueezy.com/settings/webhooks/). You can generate a webhook secret with:
 
 ```elixir
-40 |> :crypto.strong_rand_bytes() |> Base.encode16()
+# Generate a webhook signing secret with - by default - 40 characters:
+iex> LemonEx.Webhooks.gen_signing_secret()
+"ppeSr0unsIMx9ynlilgi0PrekwizK46PjVH/Pi2g"
+
+# Generate a webhook signing secret of 8 characters
+iex> LemonEx.Webhooks.gen_signing_secret(8)
+"g1NZjc9h"
+
+# Use the generator logic directly, with:
+iex> 40 |> :crypto.strong_rand_bytes() |> Base.encode64() |> binary_part(0, 40)
+"QgxcfhK39h7PJrfkQkvJ4D2rhwNrfQ1yadjb996q"
 ```
 
 Once you set up your webhook, you need to create a module that will handle the events. Like this for example:
