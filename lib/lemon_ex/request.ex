@@ -2,7 +2,7 @@ defmodule LemonEx.Request do
   @api_base_url "https://api.lemonsqueezy.com/v1"
 
   @spec post(binary(), any()) :: {:ok, map()} | {:error, any()} | {:error, integer(), any()}
-  def post(url, payload) when is_binary(payload) do
+  def post(url, payload) do
     headers = get_headers()
     url = "#{@api_base_url}#{url}"
     payload = prepare_payload(payload)
@@ -20,7 +20,7 @@ defmodule LemonEx.Request do
   end
 
   @spec patch(binary(), any()) :: {:ok, map()} | {:error, any()} | {:error, integer(), any()}
-  def patch(url, payload) when is_binary(payload) do
+  def patch(url, payload) do
     headers = get_headers()
     url = "#{@api_base_url}#{url}"
     payload = prepare_payload(payload)
