@@ -119,6 +119,16 @@ LemonEx.Customers.list(email: "foo@bar.com")
 LemonEx.Customers.list(store_id: 12345)
 ```
 
+## Testing Webhooks locally
+You can use [ngrok](https://ngrok.com/) to proxy webhook events to your `localhost:4000` like this:
+
+1. Install `ngrok` with e.g. `brew install --cask ngrok`
+2. Start `ngrok` with `ngrok http 4000`
+3. Copy the URL behind `Forwarding` that looks like this: `https://{identifier_here}.eu.ngrok.io` 
+4. Create a new Webhook in [LemonSqueezy](https://app.lemonsqueezy.com/settings/webhooks) that points to the copied URL plus your endpoint. For example: `https://{identifier}.eu.ngrok.io/webhooks/lemonsqueezy`
+5. Start your Phoenix application and enjoy!
+6. (Optional): View the event payload in the `Ngrok Inspector` at [http://localhost:4040](http://localhost:4040)
+
 ## Todos
 
 - [x] Add all schema objects
@@ -127,7 +137,9 @@ LemonEx.Customers.list(store_id: 12345)
 - [x] Write better docs
 - [ ] Allow fetching the next and previous page through `PaginatedResponse`
 - [ ] Allow drop-in of other HTTP libraries
-- [ ] Add schema tests
+- [ ] Add tests
+- [ ] Add links to API documentation to each schema and context
+- [ ] Add relationships to schemas
 
 ## Notes
 
