@@ -10,6 +10,7 @@ defmodule LemonEx.Subscriptions.Subscription do
     :variant_name,
     :user_name,
     :user_email,
+    :customer_id,
     :status,
     :status_formatted,
     :pause,
@@ -21,7 +22,9 @@ defmodule LemonEx.Subscriptions.Subscription do
     :ends_at,
     :created_at,
     :updated_at,
-    :test_mode
+    :test_mode,
+    :card_brand,
+    :card_last_four
   ]
 
   def from_json(body) do
@@ -39,6 +42,7 @@ defmodule LemonEx.Subscriptions.Subscription do
       variant_name: attributes["variant_name"],
       user_name: attributes["user_name"],
       user_email: attributes["user_email"],
+      customer_id: attributes["customer_id"],
       status: attributes["status"],
       status_formatted: attributes["status_formatted"],
       pause: attributes["pause"],
@@ -52,7 +56,9 @@ defmodule LemonEx.Subscriptions.Subscription do
       ends_at: attributes["ends_at"],
       created_at: attributes["created_at"],
       updated_at: attributes["updated_at"],
-      test_mode: attributes["test_mode"]
+      test_mode: attributes["test_mode"],
+      card_brand: attributes["card_brand"],
+      card_last_four: attributes["card_last_four"]
     }
   end
 end
