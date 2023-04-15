@@ -1,0 +1,88 @@
+{
+  "meta": {
+    "test_mode": true,
+    "event_name": "subscription_created",
+    "custom_data": {
+      "user_id": 25
+    }
+  },
+  "data": {
+    "id": "1",
+    "type": "subscriptions",
+    "links": {
+      "self": "https://api.lemonsqueezy.com/v1/subscriptions/1"
+    },
+    "attributes": {
+      "urls": {
+        "update_payment_method": "https://my_store.lemonsqueezy.com/subscription/1/payment-details?expires=1681579025&signature=123"
+      },
+      "pause": null,
+      "status": "active",
+      "ends_at": null,
+      "order_id": 1,
+      "store_id": 1,
+      "cancelled": false,
+      "renews_at": "2023-05-14T17:17:01.000000Z",
+      "test_mode": true,
+      "user_name": "Darlene Daugherty",
+      "card_brand": "visa",
+      "created_at": "2023-04-14T17:17:03.000000Z",
+      "product_id": 1,
+      "updated_at": "2023-04-14T17:17:05.000000Z",
+      "user_email": "gernser@yahoo.com",
+      "variant_id": 1,
+      "customer_id": 1,
+      "product_name": "Hobby",
+      "variant_name": "Monthly",
+      "order_item_id": 1,
+      "trial_ends_at": null,
+      "billing_anchor": 14,
+      "card_last_four": "4242",
+      "status_formatted": "Active"
+    },
+    "relationships": {
+      "order": {
+        "links": {
+          "self": "https://api.lemonsqueezy.com/v1/subscriptions/1/relationships/order",
+          "related": "https://api.lemonsqueezy.com/v1/subscriptions/1/order"
+        }
+      },
+      "store": {
+        "links": {
+          "self": "https://api.lemonsqueezy.com/v1/subscriptions/1/relationships/store",
+          "related": "https://api.lemonsqueezy.com/v1/subscriptions/1/store"
+        }
+      },
+      "product": {
+        "links": {
+          "self": "https://api.lemonsqueezy.com/v1/subscriptions/1/relationships/product",
+          "related": "https://api.lemonsqueezy.com/v1/subscriptions/1/product"
+        }
+      },
+      "variant": {
+        "links": {
+          "self": "https://api.lemonsqueezy.com/v1/subscriptions/1/relationships/variant",
+          "related": "https://api.lemonsqueezy.com/v1/subscriptions/1/variant"
+        }
+      },
+      "customer": {
+        "links": {
+          "self": "https://api.lemonsqueezy.com/v1/subscriptions/1/relationships/customer",
+          "related": "https://api.lemonsqueezy.com/v1/subscriptions/1/customer"
+        }
+      },
+      "order-item": {
+        "links": {
+          "self": "https://api.lemonsqueezy.com/v1/subscriptions/1/relationships/order-item",
+          "related": "https://api.lemonsqueezy.com/v1/subscriptions/1/order-item"
+        }
+      },
+      "subscription-invoices": {
+        "links": {
+          "self": "https://api.lemonsqueezy.com/v1/subscriptions/1/relationships/subscription-invoices",
+          "related": "https://api.lemonsqueezy.com/v1/subscriptions/1/subscription-invoices"
+        }
+      }
+    }
+  }
+}

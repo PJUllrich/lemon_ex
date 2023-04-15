@@ -46,7 +46,7 @@ defmodule LemonEx.Webhooks.PlugTest do
 
   describe "call/2" do
     setup do
-      raw_payload = load_json(:event)
+      raw_payload = load_json(:order_created_event)
 
       %{raw_payload: raw_payload}
     end
