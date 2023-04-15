@@ -7,7 +7,7 @@ An Elixir client for the API and Webhooks of LemonSqueezy.
 ```elixir
 def deps do
   [
-    {:lemon_ex, "~> 0.1.2"}
+    {:lemon_ex, "~> 0.1.4"}
   ]
 end
 ```
