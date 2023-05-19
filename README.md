@@ -144,3 +144,4 @@ You can use [ngrok](https://ngrok.com/) to proxy webhook events to your `localho
 ## Notes
 
 - The timestamps are mostly snake case but sometimes camelCase (e.g. File or User object)
+- The API Responses sometimes return foreign IDs as strings, but expect the same IDs to be an integer when making a request to the API. See #3.
