@@ -40,7 +40,9 @@ defmodule LemonEx.Orders.Order do
 
     %__MODULE__{
       id: body["id"],
-      urls: urls,
+      urls: %{
+        receipt: urls["receipt"]
+      },
       store_id: attributes["store_id"],
       customer_id: attributes["customer_id"],
       identifier: attributes["identifier"],
