@@ -1,7 +1,9 @@
 defmodule LemonEx.Orders.Order do
   defstruct [
     :id,
+    :urls,
     :store_id,
+    :customer_id,
     :identifier,
     :order_number,
     :user_name,
@@ -34,10 +36,13 @@ defmodule LemonEx.Orders.Order do
   def from_json(body) do
     attributes = body["attributes"]
     first_order_item = attributes["first_order_item"]
+    urls = attributes["urls"]
 
     %__MODULE__{
       id: body["id"],
+      urls: urls,
       store_id: attributes["store_id"],
+      customer_id: attributes["customer_id"],
       identifier: attributes["identifier"],
       order_number: attributes["order_number"],
       user_name: attributes["user_name"],
