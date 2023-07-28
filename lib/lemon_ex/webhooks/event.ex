@@ -34,7 +34,7 @@ defmodule LemonEx.Webhooks.Event do
   defp parse_data("license-keys", data), do: LicenseKey.from_json(data)
 
   defp parse_data(type, data) do
-    Logger.warn("LemonEx: Unknown webhook event type #{type}")
+    Logger.warning("LemonEx: Unknown webhook event type #{type}")
     data
   end
 end
