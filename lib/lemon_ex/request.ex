@@ -6,7 +6,8 @@ defmodule LemonEx.Request do
     headers = get_headers()
     url = "#{@api_base_url}#{url}"
     payload = prepare_payload(payload)
-    response = HTTPoison.post(url, payload, headers)
+    opts = request_options()
+    response = HTTPoison.post(url, payload, headers, opts)
     handle_response(response)
   end
 
@@ -15,7 +16,8 @@ defmodule LemonEx.Request do
     headers = get_headers()
     url = "#{@api_base_url}#{url}"
     filter = prepare_filter(params)
-    response = HTTPoison.get(url, headers, params: filter)
+    opts = [params: filter] ++ request_options()
+    response = HTTPoison.get(url, headers, opts)
     handle_response(response)
   end
 
@@ -24,7 +26,8 @@ defmodule LemonEx.Request do
     headers = get_headers()
     url = "#{@api_base_url}#{url}"
     payload = prepare_payload(payload)
-    response = HTTPoison.patch(url, payload, headers)
+    opts = request_options()
+    response = HTTPoison.patch(url, payload, headers, opts)
     handle_response(response)
   end
 
@@ -32,12 +35,17 @@ defmodule LemonEx.Request do
   def delete(url) do
     headers = get_headers()
     url = "#{@api_base_url}#{url}"
-    response = HTTPoison.delete(url, headers)
+    opts = request_options()
+    response = HTTPoison.delete(url, headers, opts)
     handle_response(response)
   end
 
   defp api_key do
     Application.get_env(:lemon_ex, :api_key, "")
+  end
+
+  defp request_options do
+    Application.get_env(:lemon_ex, :request_options, [])
   end
 
   defp get_headers do
