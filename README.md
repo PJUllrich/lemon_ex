@@ -23,10 +23,10 @@ import Config
 
 config :lemon_ex, 
   api_key: System.get_env("LEMONSQUEEZY_API_KEY"),
-  webhook_secret: System.get_env("LEMONSQUEEZY_WEBHOOK_SECRET")
-  # (Optional) You can provide HTTPoision options which are added to every request.
+  webhook_secret: System.get_env("LEMONSQUEEZY_WEBHOOK_SECRET"),
+  # (Optional) You can provide HTTPoison options which are added to every request.
   # See all options here: https://hexdocs.pm/httpoison/HTTPoison.Request.html#content
-  request_optionts: [timeout: 10_000]
+  request_options: [timeout: 10_000]
 ```
 
 If you don't provide a valid API key, you will receive `401: Unauthorized` error responses.
