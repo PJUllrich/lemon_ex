@@ -14,6 +14,7 @@
     },
     "attributes": {
       "urls": {
+        "customer_portal": "https://my_store.lemonsqueezy.com/billing?&user=12345&expires=1698413545&signature=123",
         "update_payment_method": "https://my_store.lemonsqueezy.com/subscription/1/payment-details?expires=1681579025&signature=123"
       },
       "pause": null,

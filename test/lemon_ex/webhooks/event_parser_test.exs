@@ -56,6 +56,13 @@ defmodule LemonEx.Webhooks.EventParserTest do
       assert event.data.card_brand == "visa"
       assert event.data.card_last_four == "4242"
       assert event.data.renews_at == "2023-05-14T17:17:01.000000Z"
+
+      assert event.data.urls == %{
+               update_payment_method:
+                 "https://my_store.lemonsqueezy.com/subscription/1/payment-details?expires=1681579025&signature=123",
+               customer_portal:
+                 "https://my_store.lemonsqueezy.com/billing?&user=12345&expires=1698413545&signature=123"
+             }
     end
   end
 end
