@@ -27,3 +27,6 @@ lemon_ex-*.tar
 
 # ElixirLS compile folder
 .elixir_ls
+
+# ENV vars
+.envrc
