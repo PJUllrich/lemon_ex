@@ -1,0 +1,129 @@
+{
+  "meta": {
+    "page": {
+      "currentPage": 1,
+      "from": 1,
+      "lastPage": 1,
+      "perPage": 10,
+      "to": 2,
+      "total": 2
+    }
+  },
+  "jsonapi": {
+    "version": "1.0"
+  },
+  "links": {
+    "first": "https:\/\/api.lemonsqueezy.com\/v1\/customers?page%5Bnumber%5D=1&page%5Bsize%5D=10&sort=-createdAt",
+    "last": "https:\/\/api.lemonsqueezy.com\/v1\/customers?page%5Bnumber%5D=1&page%5Bsize%5D=10&sort=-createdAt"
+  },
+  "data": [
+    {
+      "type": "customers",
+      "id": "1406556",
+      "attributes": {
+        "store_id": 48264,
+        "name": "Liza May",
+        "email": "liza@example.com",
+        "status": "subscribed",
+        "city": null,
+        "region": null,
+        "country": "ES",
+        "total_revenue_currency": 0,
+        "mrr": 3600,
+        "status_formatted": "Subscribed",
+        "country_formatted": "Spain",
+        "total_revenue_currency_formatted": "$0.00",
+        "mrr_formatted": "$36.00",
+        "urls": {
+          "customer_portal": "https:\/\/mystore.lemonsqueezy.com\/billing?expires=1698446369&user=1412358&signature=fed8b8bea09639c923353eeec8a5295471803f15a3bebc703b7b66bd8ebab862"
+        },
+        "created_at": "2023-10-14T17:52:43.000000Z",
+        "updated_at": "2023-10-14T17:52:44.000000Z",
+        "test_mode": true
+      },
+      "relationships": {
+        "store": {
+          "links": {
+            "related": "https:\/\/api.lemonsqueezy.com\/v1\/customers\/1406556\/store",
+            "self": "https:\/\/api.lemonsqueezy.com\/v1\/customers\/1406556\/relationships\/store"
+          }
+        },
+        "orders": {
+          "links": {
+            "related": "https:\/\/api.lemonsqueezy.com\/v1\/customers\/1406556\/orders",
+            "self": "https:\/\/api.lemonsqueezy.com\/v1\/customers\/1406556\/relationships\/orders"
+          }
+        },
+        "subscriptions": {
+          "links": {
+            "related": "https:\/\/api.lemonsqueezy.com\/v1\/customers\/1406556\/subscriptions",
+            "self": "https:\/\/api.lemonsqueezy.com\/v1\/customers\/1406556\/relationships\/subscriptions"
+          }
+        },
+        "license-keys": {
+          "links": {
+            "related": "https:\/\/api.lemonsqueezy.com\/v1\/customers\/1406556\/license-keys",
+            "self": "https:\/\/api.lemonsqueezy.com\/v1\/customers\/1406556\/relationships\/license-keys"
+          }
+        }
+      },
+      "links": {
+        "self": "https:\/\/api.lemonsqueezy.com\/v1\/customers\/1406556"
+      }
+    },
+    {
+      "type": "customers",
+      "id": "1406493",
+      "attributes": {
+        "store_id": 48264,
+        "name": "Joe Burns",
+        "email": "joe@example.com",
+        "status": "subscribed",
+        "city": null,
+        "region": null,
+        "country": null,
+        "total_revenue_currency": 0,
+        "mrr": 14400,
+        "status_formatted": "Subscribed",
+        "country_formatted": null,
+        "total_revenue_currency_formatted": "$0.00",
+        "mrr_formatted": "$144.00",
+        "urls": {
+          "customer_portal": "https:\/\/mystore.lemonsqueezy.com\/billing?expires=1698446369&user=1461055&signature=2b699e59adcf00238f503e722a6e8efbbba35849b47b71e6d94fcf7cce05b5f4"
+        },
+        "created_at": "2023-10-14T17:35:40.000000Z",
+        "updated_at": "2023-10-27T07:32:25.000000Z",
+        "test_mode": true
+      },
+      "relationships": {
+        "store": {
+          "links": {
+            "related": "https:\/\/api.lemonsqueezy.com\/v1\/customers\/1406493\/store",
+            "self": "https:\/\/api.lemonsqueezy.com\/v1\/customers\/1406493\/relationships\/store"
+          }
+        },
+        "orders": {
+          "links": {
+            "related": "https:\/\/api.lemonsqueezy.com\/v1\/customers\/1406493\/orders",
+            "self": "https:\/\/api.lemonsqueezy.com\/v1\/customers\/1406493\/relationships\/orders"
+          }
+        },
+        "subscriptions": {
+          "links": {
+            "related": "https:\/\/api.lemonsqueezy.com\/v1\/customers\/1406493\/subscriptions",
+            "self": "https:\/\/api.lemonsqueezy.com\/v1\/customers\/1406493\/relationships\/subscriptions"
+          }
+        },
+        "license-keys": {
+          "links": {
+            "related": "https:\/\/api.lemonsqueezy.com\/v1\/customers\/1406493\/license-keys",
+            "self": "https:\/\/api.lemonsqueezy.com\/v1\/customers\/1406493\/relationships\/license-keys"
+          }
+        }
+      },
+      "links": {
+        "self": "https:\/\/api.lemonsqueezy.com\/v1\/customers\/1406493"
+      }
+    }
+  ]
+}
