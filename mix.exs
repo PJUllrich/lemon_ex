@@ -34,7 +34,8 @@ defmodule LemonEx.MixProject do
       {:jason, "~> 1.2"},
       {:plug, "~> 1.14"},
       {:plug_crypto, "~> 1.2"},
-      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
+      {:mock, "~> 0.3.8", only: :test}
     ]
   end
 

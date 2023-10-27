@@ -1,0 +1,211 @@
+{
+  "meta": {
+    "page": {
+      "currentPage": 1,
+      "from": 1,
+      "lastPage": 1,
+      "perPage": 10,
+      "to": 2,
+      "total": 2
+    }
+  },
+  "jsonapi": {
+    "version": "1.0"
+  },
+  "links": {
+    "first": "https:\\/\\/api.lemonsqueezy.com\\/v1\\/subscriptions?page%5Bnumber%5D=1&page%5Bsize%5D=10&sort=-createdAt",
+    "last": "https:\\/\\/api.lemonsqueezy.com\\/v1\\/subscriptions?page%5Bnumber%5D=1&page%5Bsize%5D=10&sort=-createdAt"
+  },
+  "data": [
+    {
+      "type": "subscriptions",
+      "id": "169590",
+      "attributes": {
+        "store_id": 34567,
+        "customer_id": 1406493,
+        "order_id": 1487261,
+        "order_item_id": 1450500,
+        "product_id": 121004,
+        "variant_id": 139405,
+        "product_name": "App Pro",
+        "variant_name": "App Pro Monthly",
+        "user_name": "Liza May",
+        "user_email": "liza@example.com",
+        "status": "active",
+        "status_formatted": "Active",
+        "card_brand": "visa",
+        "card_last_four": "4242",
+        "pause": null,
+        "cancelled": false,
+        "trial_ends_at": null,
+        "billing_anchor": 27,
+        "first_subscription_item": {
+          "id": 132215,
+          "subscription_id": 169590,
+          "price_id": 127630,
+          "quantity": 1,
+          "is_usage_based": false,
+          "created_at": "2023-10-27T07:32:24.000000Z",
+          "updated_at": "2023-10-27T07:32:24.000000Z"
+        },
+        "urls": {
+          "update_payment_method": "https:\\/\\/mystore.lemonsqueezy.com\\/subscription\\/169590\\/payment-details?expires=1698499230&signature=18cbb5bfc703292df67d0f3528e533e396115096a404bb1876c895805956a959",
+          "customer_portal": "https:\\/\\/mystore.lemonsqueezy.com\\/billing?expires=1698434430&user=1461055&signature=27b0921cc4b6a37bc5caed624bc5dbaa44d374e26e892544421668561b8ff0f5"
+        },
+        "renews_at": "2023-11-27T07:32:22.000000Z",
+        "ends_at": null,
+        "created_at": "2023-10-27T07:32:24.000000Z",
+        "updated_at": "2023-10-27T07:32:25.000000Z",
+        "test_mode": true
+      },
+      "relationships": {
+        "store": {
+          "links": {
+            "related": "https:\\/\\/api.lemonsqueezy.com\\/v1\\/subscriptions\\/169590\\/store",
+            "self": "https:\\/\\/api.lemonsqueezy.com\\/v1\\/subscriptions\\/169590\\/relationships\\/store"
+          }
+        },
+        "customer": {
+          "links": {
+            "related": "https:\\/\\/api.lemonsqueezy.com\\/v1\\/subscriptions\\/169590\\/customer",
+            "self": "https:\\/\\/api.lemonsqueezy.com\\/v1\\/subscriptions\\/169590\\/relationships\\/customer"
+          }
+        },
+        "order": {
+          "links": {
+            "related": "https:\\/\\/api.lemonsqueezy.com\\/v1\\/subscriptions\\/169590\\/order",
+            "self": "https:\\/\\/api.lemonsqueezy.com\\/v1\\/subscriptions\\/169590\\/relationships\\/order"
+          }
+        },
+        "order-item": {
+          "links": {
+            "related": "https:\\/\\/api.lemonsqueezy.com\\/v1\\/subscriptions\\/169590\\/order-item",
+            "self": "https:\\/\\/api.lemonsqueezy.com\\/v1\\/subscriptions\\/169590\\/relationships\\/order-item"
+          }
+        },
+        "product": {
+          "links": {
+            "related": "https:\\/\\/api.lemonsqueezy.com\\/v1\\/subscriptions\\/169590\\/product",
+            "self": "https:\\/\\/api.lemonsqueezy.com\\/v1\\/subscriptions\\/169590\\/relationships\\/product"
+          }
+        },
+        "variant": {
+          "links": {
+            "related": "https:\\/\\/api.lemonsqueezy.com\\/v1\\/subscriptions\\/169590\\/variant",
+            "self": "https:\\/\\/api.lemonsqueezy.com\\/v1\\/subscriptions\\/169590\\/relationships\\/variant"
+          }
+        },
+        "subscription-items": {
+          "links": {
+            "related": "https:\\/\\/api.lemonsqueezy.com\\/v1\\/subscriptions\\/169590\\/subscription-items",
+            "self": "https:\\/\\/api.lemonsqueezy.com\\/v1\\/subscriptions\\/169590\\/relationships\\/subscription-items"
+          }
+        },
+        "subscription-invoices": {
+          "links": {
+            "related": "https:\\/\\/api.lemonsqueezy.com\\/v1\\/subscriptions\\/169590\\/subscription-invoices",
+            "self": "https:\\/\\/api.lemonsqueezy.com\\/v1\\/subscriptions\\/169590\\/relationships\\/subscription-invoices"
+          }
+        }
+      },
+      "links": {
+        "self": "https:\\/\\/api.lemonsqueezy.com\\/v1\\/subscriptions\\/169590"
+      }
+    },
+    {
+      "type": "subscriptions",
+      "id": "169586",
+      "attributes": {
+        "store_id": 34567,
+        "customer_id": 1406493,
+        "order_id": 1487247,
+        "order_item_id": 1450485,
+        "product_id": 121004,
+        "variant_id": 139405,
+        "product_name": "App Pro",
+        "variant_name": "App Pro Monthly",
+        "user_name": "Liza May",
+        "user_email": "liza@example.com",
+        "status": "active",
+        "status_formatted": "Active",
+        "card_brand": "visa",
+        "card_last_four": "4242",
+        "pause": null,
+        "cancelled": false,
+        "trial_ends_at": null,
+        "billing_anchor": 27,
+        "first_subscription_item": {
+          "id": 132211,
+          "subscription_id": 169586,
+          "price_id": 127630,
+          "quantity": 1,
+          "is_usage_based": false,
+          "created_at": "2023-10-27T07:27:30.000000Z",
+          "updated_at": "2023-10-27T07:27:30.000000Z"
+        },
+        "urls": {
+          "update_payment_method": "https:\\/\\/mystore.lemonsqueezy.com\\/subscription\\/169586\\/payment-details?expires=1698499230&signature=56a13a38f81e8d6592c2d28f379183add6b00f0034188437b919f97752f96ef8",
+          "customer_portal": "https:\\/\\/mystore.lemonsqueezy.com\\/billing?expires=1698434430&user=1461055&signature=27b0921cc4b6a37bc5caed624bc5dbaa44d374e26e892544421668561b8ff0f5"
+        },
+        "renews_at": "2023-11-27T07:27:27.000000Z",
+        "ends_at": null,
+        "created_at": "2023-10-27T07:27:29.000000Z",
+        "updated_at": "2023-10-27T07:27:31.000000Z",
+        "test_mode": true
+      },
+      "relationships": {
+        "store": {
+          "links": {
+            "related": "https:\\/\\/api.lemonsqueezy.com\\/v1\\/subscriptions\\/169586\\/store",
+            "self": "https:\\/\\/api.lemonsqueezy.com\\/v1\\/subscriptions\\/169586\\/relationships\\/store"
+          }
+        },
+        "customer": {
+          "links": {
+            "related": "https:\\/\\/api.lemonsqueezy.com\\/v1\\/subscriptions\\/169586\\/customer",
+            "self": "https:\\/\\/api.lemonsqueezy.com\\/v1\\/subscriptions\\/169586\\/relationships\\/customer"
+          }
+        },
+        "order": {
+          "links": {
+            "related": "https:\\/\\/api.lemonsqueezy.com\\/v1\\/subscriptions\\/169586\\/order",
+            "self": "https:\\/\\/api.lemonsqueezy.com\\/v1\\/subscriptions\\/169586\\/relationships\\/order"
+          }
+        },
+        "order-item": {
+          "links": {
+            "related": "https:\\/\\/api.lemonsqueezy.com\\/v1\\/subscriptions\\/169586\\/order-item",
+            "self": "https:\\/\\/api.lemonsqueezy.com\\/v1\\/subscriptions\\/169586\\/relationships\\/order-item"
+          }
+        },
+        "product": {
+          "links": {
+            "related": "https:\\/\\/api.lemonsqueezy.com\\/v1\\/subscriptions\\/169586\\/product",
+            "self": "https:\\/\\/api.lemonsqueezy.com\\/v1\\/subscriptions\\/169586\\/relationships\\/product"
+          }
+        },
+        "variant": {
+          "links": {
+            "related": "https:\\/\\/api.lemonsqueezy.com\\/v1\\/subscriptions\\/169586\\/variant",
+            "self": "https:\\/\\/api.lemonsqueezy.com\\/v1\\/subscriptions\\/169586\\/relationships\\/variant"
+          }
+        },
+        "subscription-items": {
+          "links": {
+            "related": "https:\\/\\/api.lemonsqueezy.com\\/v1\\/subscriptions\\/169586\\/subscription-items",
+            "self": "https:\\/\\/api.lemonsqueezy.com\\/v1\\/subscriptions\\/169586\\/relationships\\/subscription-items"
+          }
+        },
+        "subscription-invoices": {
+          "links": {
+            "related": "https:\\/\\/api.lemonsqueezy.com\\/v1\\/subscriptions\\/169586\\/subscription-invoices",
+            "self": "https:\\/\\/api.lemonsqueezy.com\\/v1\\/subscriptions\\/169586\\/relationships\\/subscription-invoices"
+          }
+        }
+      },
+      "links": {
+        "self": "https:\\/\\/api.lemonsqueezy.com\\/v1\\/subscriptions\\/169586"
+      }
+    }
+  ]
+}

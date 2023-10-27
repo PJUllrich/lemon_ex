@@ -50,7 +50,8 @@ defmodule LemonEx.Subscriptions.Subscription do
       billing_anchor: attributes["billing_anchor"],
       trial_ends_at: attributes["trial_ends_at"],
       urls: %{
-        update_payment_method: urls["update_payment_method"]
+        update_payment_method: urls["update_payment_method"],
+        customer_portal: urls["customer_portal"]
       },
       renews_at: attributes["renews_at"],
       ends_at: attributes["ends_at"],
