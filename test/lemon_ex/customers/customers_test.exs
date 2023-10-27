@@ -32,42 +32,50 @@ defmodule LemonEx.CustomersTest do
       %LemonEx.PaginatedResponse{
         data: [
           %LemonEx.Customers.Customer{
-            created_at: "2023-10-14T17:52:43.000000Z",
-            id: "1406556",
-            status: "subscribed",
-            status_formatted: "Subscribed",
-            store_id: 48264,
-            test_mode: true,
-            updated_at: "2023-10-14T17:52:44.000000Z",
             city: nil,
             country: "ES",
             country_formatted: "Spain",
+            created_at: "2023-10-14T17:52:43.000000Z",
             email: "liza@example.com",
+            id: "1406556",
             mrr: 3600,
             mrr_formatted: "$36.00",
             name: "Liza May",
             region: nil,
-            total_revenue_currency: 0,
-            total_revenue_currency_formatted: "$0.00"
-          },
-          %LemonEx.Customers.Customer{
-            created_at: "2023-10-14T17:35:40.000000Z",
-            id: "1406493",
             status: "subscribed",
             status_formatted: "Subscribed",
             store_id: 48264,
             test_mode: true,
-            updated_at: "2023-10-27T07:32:25.000000Z",
+            total_revenue_currency: 0,
+            total_revenue_currency_formatted: "$0.00",
+            updated_at: "2023-10-14T17:52:44.000000Z",
+            urls: %{
+              customer_portal:
+                "https://mystore.lemonsqueezy.com/billing?expires=1698446369&user=1412358&signature=fed8b8bea09639c923353eeec8a5295471803f15a3bebc703b7b66bd8ebab862"
+            }
+          },
+          %LemonEx.Customers.Customer{
             city: nil,
             country: nil,
             country_formatted: nil,
+            created_at: "2023-10-14T17:35:40.000000Z",
             email: "joe@example.com",
+            id: "1406493",
             mrr: 14400,
             mrr_formatted: "$144.00",
             name: "Joe Burns",
             region: nil,
+            status: "subscribed",
+            status_formatted: "Subscribed",
+            store_id: 48264,
+            test_mode: true,
             total_revenue_currency: 0,
-            total_revenue_currency_formatted: "$0.00"
+            total_revenue_currency_formatted: "$0.00",
+            updated_at: "2023-10-27T07:32:25.000000Z",
+            urls: %{
+              customer_portal:
+                "https://mystore.lemonsqueezy.com/billing?expires=1698446369&user=1461055&signature=2b699e59adcf00238f503e722a6e8efbbba35849b47b71e6d94fcf7cce05b5f4"
+            }
           }
         ],
         links: %{
@@ -89,23 +97,27 @@ defmodule LemonEx.CustomersTest do
     {
       :ok,
       %LemonEx.Customers.Customer{
-        created_at: "2023-10-14T17:52:43.000000Z",
-        id: "1406556",
-        status: "subscribed",
-        status_formatted: "Subscribed",
-        store_id: 48264,
-        test_mode: true,
-        updated_at: "2023-10-14T17:52:44.000000Z",
         city: nil,
         country: "ES",
         country_formatted: "Spain",
+        created_at: "2023-10-14T17:52:43.000000Z",
         email: "liza@example.com",
+        id: "1406556",
         mrr: 3600,
         mrr_formatted: "$36.00",
         name: "Liza May",
         region: nil,
+        status: "subscribed",
+        status_formatted: "Subscribed",
+        store_id: 48264,
+        test_mode: true,
         total_revenue_currency: 0,
-        total_revenue_currency_formatted: "$0.00"
+        total_revenue_currency_formatted: "$0.00",
+        updated_at: "2023-10-14T17:52:44.000000Z",
+        urls: %{
+          customer_portal:
+            "https://mystore.lemonsqueezy.com/billing?expires=1698446663&user=1412358&signature=cb8dfe5c40dbec4af7082d8a1b082c07cc12d4ba0a91000d6280d2d5b9c2fdc3"
+        }
       }
     }
   end
