@@ -15,8 +15,8 @@ defmodule LemonEx.Request do
   def get(url, params \\ []) do
     headers = get_headers()
     url = "#{@api_base_url}#{url}"
-    filter = prepare_filter(params)
-    opts = [params: filter] ++ request_options()
+    params = prepare_params(params)
+    opts = [params: params] ++ request_options()
     response = HTTPoison.get(url, headers, opts)
     handle_response(response)
   end
@@ -62,11 +62,19 @@ defmodule LemonEx.Request do
     Jason.encode!(payload)
   end
 
-  defp prepare_filter([]), do: []
+  defp prepare_params([]), do: []
 
-  defp prepare_filter(params) do
+  defp prepare_params(params) do
+    {filter, params} = Keyword.pop(params, :filter, [])
+    {page, params} = Keyword.pop(params, :page, [])
+    filter = build_nested_params(filter, "filter")
+    page = build_nested_params(page, "page")
+    params |> Map.new() |> Map.merge(filter) |> Map.merge(page)
+  end
+
+  defp build_nested_params(params, param_name) do
     Enum.reduce(params, %{}, fn {key, value}, acc ->
-      Map.put(acc, "filter[#{key}]", value)
+      Map.put(acc, "#{param_name}[#{key}]", value)
     end)
   end
 

@@ -115,11 +115,23 @@ When fetching all elements using `list/1`, you can add an optional filter, like 
 LemonEx.Customers.list()
 
 # With both, email and store_id filter
-LemonEx.Customers.list(email: "foo@bar.com", store_id: 12345)
+LemonEx.Customers.list(filter: [email: "foo@bar.com", store_id: 12345])
 
 # With only email filter or only store_id filter
-LemonEx.Customers.list(email: "foo@bar.com")
-LemonEx.Customers.list(store_id: 12345)
+LemonEx.Customers.list(filter: [email: "foo@bar.com"])
+LemonEx.Customers.list(filter: [store_id: 12345])
+```
+
+## List with Pagination
+
+You can also provide `page: [size: 2, number: 3]` and a `sort` option when listing a record, like this:
+
+```elixir
+# With both, email and store_id filter
+LemonEx.Customers.list(page: [size: 2, number: 3], sort: "-createdAt")
+
+# You can also combine `page` and `filter` in a single call
+LemonEx.Customers.list(filter: [store_id: 12345], page: [size: 2, number: 3], sort: "-createdAt,name")
 ```
 
 ## Testing Webhooks locally
