@@ -1,7 +1,7 @@
 defmodule LemonEx.MixProject do
   use Mix.Project
 
-  @version "0.1.7"
+  @version "0.2.0"
   @source_url "https://github.com/PJUllrich/lemon_ex"
 
   def project do
