@@ -1,3 +1,7 @@
+## v0.2.1
+
+* Set all dependencies to version `>= 0.0.0` to prevent version conflicts with applications that use the library.
+
 ## v0.2.0
 
 * *BREAKING* Move `filter` parameters for all `list`-calls to a `filter: [...]`-option.

@@ -1,7 +1,7 @@
 defmodule LemonEx.MixProject do
   use Mix.Project
 
-  @version "0.2.0"
+  @version "0.2.1"
   @source_url "https://github.com/PJUllrich/lemon_ex"
 
   def project do
@@ -30,12 +30,12 @@ defmodule LemonEx.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:httpoison, "~> 2.1"},
-      {:jason, "~> 1.2"},
-      {:plug, "~> 1.14"},
-      {:plug_crypto, "~> 1.2"},
+      {:httpoison, ">= 0.0.0"},
+      {:jason, ">= 0.0.0"},
+      {:plug, ">= 0.0.0"},
+      {:plug_crypto, ">= 0.0.0"},
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
-      {:mock, "~> 0.3.8", only: :test}
+      {:mock, ">= 0.0.0", only: :test}
     ]
   end
 
