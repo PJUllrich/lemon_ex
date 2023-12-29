@@ -3,6 +3,8 @@ defmodule LemonEx.Webhooks.Event do
   An event received by the Webhook.
   """
 
+  @type t :: %__MODULE__{}
+
   require Logger
 
   alias LemonEx.LicenseKeys.LicenseKey
