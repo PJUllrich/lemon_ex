@@ -38,6 +38,14 @@
       "order_item_id": 1,
       "trial_ends_at": null,
       "billing_anchor": 14,
+      "first_subscription_item": {
+        "id": 1,
+        "subscription_id": 1,
+        "price_id": 1,
+        "quantity": 5,
+        "created_at": "2021-08-11T13:47:28.000000Z",
+        "updated_at": "2021-08-11T13:47:28.000000Z"
+      },
       "card_last_four": "4242",
       "status_formatted": "Active"
     },

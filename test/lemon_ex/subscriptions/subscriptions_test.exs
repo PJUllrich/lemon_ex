@@ -5,18 +5,18 @@ defmodule LemonEx.SubscriptionsTest do
   import Support.Fixtures, only: [load_json: 1]
 
   test "list" do
-    with_mock HTTPoison, get: succesful_response("api/v1/subscriptions_list") do
+    with_mock HTTPoison, get: successful_response("api/v1/subscriptions_list") do
       assert LemonEx.Subscriptions.list() == expected_subscription_list()
     end
   end
 
   test "get" do
-    with_mock HTTPoison, get: succesful_response("api/v1/subscriptions_get") do
+    with_mock HTTPoison, get: successful_response("api/v1/subscriptions_get") do
       assert LemonEx.Subscriptions.get(169_590) == expected_subscription()
     end
   end
 
-  defp succesful_response(json_file) do
+  defp successful_response(json_file) do
     fn _url, _params, _headers ->
       {:ok,
        %HTTPoison.Response{
@@ -59,6 +59,7 @@ defmodule LemonEx.SubscriptionsTest do
            cancelled: false,
            trial_ends_at: nil,
            billing_anchor: 27,
+           first_subscription_item: nil,
            urls: %{
              customer_portal:
                "https:\\/\\/mystore.lemonsqueezy.com\\/billing?expires=1698434430&user=1461055&signature=27b0921cc4b6a37bc5caed624bc5dbaa44d374e26e892544421668561b8ff0f5",
@@ -91,6 +92,14 @@ defmodule LemonEx.SubscriptionsTest do
            cancelled: false,
            trial_ends_at: nil,
            billing_anchor: 27,
+           first_subscription_item: %{
+             id: 132_211,
+             subscription_id: 169_586,
+             price_id: 127_630,
+             quantity: 1,
+             created_at: "2023-10-27T07:27:30.000000Z",
+             updated_at: "2023-10-27T07:27:30.000000Z"
+           },
            urls: %{
              customer_portal:
                "https:\\/\\/mystore.lemonsqueezy.com\\/billing?expires=1698434430&user=1461055&signature=27b0921cc4b6a37bc5caed624bc5dbaa44d374e26e892544421668561b8ff0f5",
@@ -129,6 +138,14 @@ defmodule LemonEx.SubscriptionsTest do
        cancelled: false,
        trial_ends_at: nil,
        billing_anchor: 27,
+       first_subscription_item: %{
+         id: 132_215,
+         subscription_id: 169_590,
+         price_id: 127_630,
+         quantity: 1,
+         created_at: "2023-10-27T07:32:24.000000Z",
+         updated_at: "2023-10-27T07:32:24.000000Z"
+       },
        urls: %{
          customer_portal:
            "https://mystore.lemonsqueezy.com/billing?expires=1698445809&user=1461055&signature=d0accab17db6cd5fbd9243dd5b57afd131972d61ad81284d26b0dbfcc5e91119",

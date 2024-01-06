@@ -39,15 +39,7 @@
         "cancelled": false,
         "trial_ends_at": null,
         "billing_anchor": 27,
-        "first_subscription_item": {
-          "id": 132215,
-          "subscription_id": 169590,
-          "price_id": 127630,
-          "quantity": 1,
-          "is_usage_based": false,
-          "created_at": "2023-10-27T07:32:24.000000Z",
-          "updated_at": "2023-10-27T07:32:24.000000Z"
-        },
+        "first_subscription_item": null,
         "urls": {
           "update_payment_method": "https:\\/\\/mystore.lemonsqueezy.com\\/subscription\\/169590\\/payment-details?expires=1698499230&signature=18cbb5bfc703292df67d0f3528e533e396115096a404bb1876c895805956a959",
           "customer_portal": "https:\\/\\/mystore.lemonsqueezy.com\\/billing?expires=1698434430&user=1461055&signature=27b0921cc4b6a37bc5caed624bc5dbaa44d374e26e892544421668561b8ff0f5"
@@ -139,7 +131,6 @@
           "subscription_id": 169586,
           "price_id": 127630,
           "quantity": 1,
-          "is_usage_based": false,
           "created_at": "2023-10-27T07:27:30.000000Z",
           "updated_at": "2023-10-27T07:27:30.000000Z"
         },

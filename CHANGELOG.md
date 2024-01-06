@@ -1,3 +1,7 @@
+## v0.2.2
+
+* Add `first_subscription_item` to Subscriptions
+
 ## v0.2.1
 
 * Set all dependencies to version `>= 0.0.0` to prevent version conflicts with applications that use the library.

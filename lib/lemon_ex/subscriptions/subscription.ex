@@ -17,6 +17,7 @@ defmodule LemonEx.Subscriptions.Subscription do
     :cancelled,
     :trial_ends_at,
     :billing_anchor,
+    :first_subscription_item,
     :urls,
     :renews_at,
     :ends_at,
@@ -48,6 +49,7 @@ defmodule LemonEx.Subscriptions.Subscription do
       pause: attributes["pause"],
       cancelled: attributes["cancelled"],
       billing_anchor: attributes["billing_anchor"],
+      first_subscription_item: first_subscription_item(attributes),
       trial_ends_at: attributes["trial_ends_at"],
       urls: %{
         update_payment_method: urls["update_payment_method"],
@@ -60,6 +62,21 @@ defmodule LemonEx.Subscriptions.Subscription do
       test_mode: attributes["test_mode"],
       card_brand: attributes["card_brand"],
       card_last_four: attributes["card_last_four"]
+    }
+  end
+
+  defp first_subscription_item(%{"first_subscription_item" => nil}) do
+    nil
+  end
+
+  defp first_subscription_item(%{"first_subscription_item" => item}) do
+    %{
+      id: item["id"],
+      subscription_id: item["subscription_id"],
+      price_id: item["price_id"],
+      quantity: item["quantity"],
+      created_at: item["created_at"],
+      updated_at: item["updated_at"]
     }
   end
 end
