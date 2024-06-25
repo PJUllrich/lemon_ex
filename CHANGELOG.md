@@ -1,3 +1,9 @@
+## v0.2.3 - 2024-06-25
+
+* Add `UsageRecords` endpoints.
+* Accept the API-key as a request option in all endpoints.
+* Add a Livebook for easier local testing of endpoints.
+
 ## v0.2.2
 
 * Add `first_subscription_item` to Subscriptions

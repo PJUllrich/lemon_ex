@@ -7,7 +7,7 @@ An Elixir client for the API and Webhooks of LemonSqueezy.
 ```elixir
 def deps do
   [
-    {:lemon_ex, "~> 0.2.2"}
+    {:lemon_ex, "~> 0.2.3"}
   ]
 end
 ```
@@ -21,12 +21,18 @@ To make API calls, you need to create an [API key](https://docs.lemonsqueezy.com
 ```elixir
 import Config
 
-config :lemon_ex, 
+config :lemon_ex,
   api_key: System.get_env("LEMONSQUEEZY_API_KEY"),
   webhook_secret: System.get_env("LEMONSQUEEZY_WEBHOOK_SECRET"),
   # (Optional) You can provide HTTPoison options which are added to every request.
   # See all options here: https://hexdocs.pm/httpoison/HTTPoison.Request.html#content
   request_options: [timeout: 10_000]
+```
+
+Alternatively, you can also pass the `api_key` as an option when you make a request, like this:
+
+```elixir
+LemonEx.UsageRecords.list([], [api_key: "your-api-key"])
 ```
 
 If you don't provide a valid API key, you will receive `401: Unauthorized` error responses.
@@ -139,10 +145,14 @@ You can use [ngrok](https://ngrok.com/) to proxy webhook events to your `localho
 
 1. Install `ngrok` with e.g. `brew install --cask ngrok`
 2. Start `ngrok` with `ngrok http 4000`
-3. Copy the URL behind `Forwarding` that looks like this: `https://{identifier_here}.eu.ngrok.io` 
+3. Copy the URL behind `Forwarding` that looks like this: `https://{identifier_here}.eu.ngrok.io`
 4. Create a new Webhook in [LemonSqueezy](https://app.lemonsqueezy.com/settings/webhooks) that points to the copied URL plus your endpoint. For example: `https://{identifier}.eu.ngrok.io/webhooks/lemonsqueezy`
 5. Start your Phoenix application and enjoy!
 6. (Optional): View the event payload in the `Ngrok Inspector` at [http://localhost:4040](http://localhost:4040)
+
+## Testing Endpoints locally
+
+You can use the `testing.livemd` Livebook to test LemonEx endpoints locally. Simply start the Livebook, add your test api key as `LEMON_EX_API_KEY` to the livebook, and start testing.
 
 ## Todos
 

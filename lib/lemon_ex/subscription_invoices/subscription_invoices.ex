@@ -3,14 +3,14 @@ defmodule LemonEx.SubscriptionInvoices do
   alias LemonEx.Request
   alias LemonEx.PaginatedResponse
 
-  def get(id) do
-    with {:ok, %{"data" => body}} <- Request.get("/subscription-invoices/#{id}") do
+  def get(id, opts \\ []) do
+    with {:ok, %{"data" => body}} <- Request.get("/subscription-invoices/#{id}", opts) do
       {:ok, SubscriptionInvoice.from_json(body)}
     end
   end
 
-  def list(filter \\ []) do
-    with {:ok, body} <- Request.get("/subscription-invoices", filter) do
+  def list(filter \\ [], opts \\ []) do
+    with {:ok, body} <- Request.get("/subscription-invoices", filter, opts) do
       {:ok, PaginatedResponse.from_json(body, SubscriptionInvoice)}
     end
   end

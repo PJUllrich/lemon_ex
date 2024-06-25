@@ -1,0 +1,23 @@
+# Testing LemonEx Locally
+
+```elixir
+Mix.install(
+  [{:lemon_ex, path: __DIR__, env: :dev}],
+  config_path: __DIR__ <> "/config/config.exs"
+)
+```
+
+## Load the API Key
+
+```elixir
+api_key = System.get_env("LB_LEMON_EX_API_KEY")
+opts = [api_key: api_key]
+```
+
+## Testing
+
+```elixir
+LemonEx.UsageRecords.list([], opts)
+```
+
+<!-- livebook:{"offset":319,"stamp":{"token":"XCP.24WzmGe_WVMIuvtCzGDeuZEH7U_zrZzPt4Dlhl3VNSvLF0XQCJEXRiiHAgbGxj_AB08vX1EKhMVn4zP9bYAfGdJu5FIBGRTA1Yv6ULcS_Cdv7DyfOFVM_bsUwg","version":2}} -->

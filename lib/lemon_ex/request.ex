@@ -1,9 +1,10 @@
 defmodule LemonEx.Request do
   @api_base_url "https://api.lemonsqueezy.com/v1"
 
-  @spec post(binary(), any()) :: {:ok, map()} | {:error, any()} | {:error, integer(), any()}
-  def post(url, payload) do
-    headers = get_headers()
+  @spec post(binary(), any(), keyword()) ::
+          {:ok, map()} | {:error, any()} | {:error, integer(), any()}
+  def post(url, payload, opts \\ []) do
+    headers = get_headers(opts)
     url = "#{@api_base_url}#{url}"
     payload = prepare_payload(payload)
     opts = request_options()
@@ -11,9 +12,10 @@ defmodule LemonEx.Request do
     handle_response(response)
   end
 
-  @spec get(binary(), keyword()) :: {:ok, map()} | {:error, any()} | {:error, integer(), any()}
-  def get(url, params \\ []) do
-    headers = get_headers()
+  @spec get(binary(), keyword(), keyword()) ::
+          {:ok, map()} | {:error, any()} | {:error, integer(), any()}
+  def get(url, params \\ [], opts \\ []) do
+    headers = get_headers(opts)
     url = "#{@api_base_url}#{url}"
     params = prepare_params(params)
     opts = [params: params] ++ request_options()
@@ -21,9 +23,10 @@ defmodule LemonEx.Request do
     handle_response(response)
   end
 
-  @spec patch(binary(), any()) :: {:ok, map()} | {:error, any()} | {:error, integer(), any()}
-  def patch(url, payload) do
-    headers = get_headers()
+  @spec patch(binary(), any(), keyword()) ::
+          {:ok, map()} | {:error, any()} | {:error, integer(), any()}
+  def patch(url, payload, opts \\ []) do
+    headers = get_headers(opts)
     url = "#{@api_base_url}#{url}"
     payload = prepare_payload(payload)
     opts = request_options()
@@ -31,9 +34,10 @@ defmodule LemonEx.Request do
     handle_response(response)
   end
 
-  @spec delete(binary()) :: :ok | {:ok, map()} | {:error, any()} | {:error, integer(), any()}
-  def delete(url) do
-    headers = get_headers()
+  @spec delete(binary(), keyword()) ::
+          :ok | {:ok, map()} | {:error, any()} | {:error, integer(), any()}
+  def delete(url, opts \\ []) do
+    headers = get_headers(opts)
     url = "#{@api_base_url}#{url}"
     opts = request_options()
     response = HTTPoison.delete(url, headers, opts)
@@ -48,9 +52,11 @@ defmodule LemonEx.Request do
     Application.get_env(:lemon_ex, :request_options, [])
   end
 
-  defp get_headers do
+  defp get_headers(opts) do
+    bearer_token = Keyword.get(opts, :api_key, api_key())
+
     [
-      {"Authorization", "Bearer #{api_key()}"},
+      {"Authorization", "Bearer #{bearer_token}"},
       {"Accept", "application/vnd.api+json"},
       {"Content-Type", "application/vnd.api+json"}
     ]

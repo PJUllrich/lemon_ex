@@ -3,7 +3,7 @@ defmodule LemonEx.Checkouts do
   alias LemonEx.Request
   alias LemonEx.PaginatedResponse
 
-  def create(store_id, variant_id, attributes) do
+  def create(store_id, variant_id, attributes, opts \\ []) do
     data = %{
       type: "checkouts",
       attributes: attributes,
@@ -25,19 +25,19 @@ defmodule LemonEx.Checkouts do
 
     payload = %{data: data}
 
-    with {:ok, %{"data" => body}} <- Request.post("/checkouts", payload) do
+    with {:ok, %{"data" => body}} <- Request.post("/checkouts", payload, opts) do
       {:ok, Checkout.from_json(body)}
     end
   end
 
-  def get(id) do
-    with {:ok, %{"data" => body}} <- Request.get("/checkouts/#{id}") do
+  def get(id, opts \\ []) do
+    with {:ok, %{"data" => body}} <- Request.get("/checkouts/#{id}", opts) do
       {:ok, Checkout.from_json(body)}
     end
   end
 
-  def list(filter \\ []) do
-    with {:ok, body} <- Request.get("/checkouts", filter) do
+  def list(filter \\ [], opts \\ []) do
+    with {:ok, body} <- Request.get("/checkouts", filter, opts) do
       {:ok, PaginatedResponse.from_json(body, Checkout)}
     end
   end
