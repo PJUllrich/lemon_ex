@@ -8,7 +8,7 @@ defmodule LemonEx.UsageRecords do
       type: "usage-records",
       attributes: attributes,
       relationships: %{
-        subscription_item: %{
+        "subscription-item": %{
           data: %{
             type: "subscription-items",
             id: to_string(subscription_id)
