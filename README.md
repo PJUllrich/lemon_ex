@@ -16,7 +16,7 @@ end
 
 ## Configuration
 
-To make API calls, you need to create an [API key](https://docs.lemonsqueezy.com/docs/guides/developer-guide/getting-started) first. If you also want to handle webhook requests, you need to create a [webhook secret](https://docs.lemonsqueezy.com/api/webhooks) too. See the section below for tips on how to generate the webhook secret. Once you have these, you can configure them in e.g. your `runtime.exs` like this:
+To make API calls, you need to create an [API key](https://docs.lemonsqueezy.com/guides/developer-guide/getting-started#create-an-api-key) first. If you also want to handle webhook requests, you need to create a [webhook secret](https://docs.lemonsqueezy.com/api/webhooks) too. See the section below for tips on how to generate the webhook secret. Once you have these, you can configure them in e.g. your `runtime.exs` like this:
 
 ```elixir
 import Config
